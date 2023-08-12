@@ -2,8 +2,8 @@
 const display = document.getElementById('display');
 const history = document.querySelector('.history');
 const buttons = document.querySelectorAll('.btn');
-let currentInput = '';
-let currentOperator = '';
+let currentInput = 0;
+let currentOperator = 0;
 let shouldClearDisplay = false;
 
 buttons.forEach(button => {
@@ -34,22 +34,20 @@ function handleButtonClick(value) {
     currentInput = (parseFloat(currentInput) / 100).toString();
     updateDisplay();
   } else {
-    if (currentOperator === '^') {
-      currentInput = Math.pow(parseFloat(currentInput), parseFloat(value));
-      currentOperator = '';
-      shouldClearDisplay = true;
-      updateHistory();
+    if (shouldClearDisplay || currentInput === '0') {
+      currentInput = value;
+      shouldClearDisplay = false;
     } else {
       currentInput += value;
-      updateDisplay();
     }
+    updateDisplay();
   }
 }
 
 function clearDisplay() {
-  currentInput = "0";
+  currentInput = 0;
   currentOperator = 0;
-  shouldClearDisplay = false;
+  shouldClearDisplay = true;
   updateDisplay();
   updateHistory();
 }
@@ -57,7 +55,7 @@ function clearDisplay() {
 function calculate() {
   try {
     const result = eval(currentInput);
-    currentInput = result.toString();
+    currentInput = result;
     currentOperator = '';
     shouldClearDisplay = true;
     updateDisplay();
@@ -73,5 +71,5 @@ function updateDisplay() {
 }
 
 function updateHistory() {
-  history.textContent = currentInput + (currentOperator ? ' ' + currentOperator : '');
+  history.textContent = currentInput + (currentOperator ? ' ' + currentOperator : 0);
 }
