@@ -2,9 +2,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(to bottom, #4a90e2, #375aa5);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -18,6 +19,12 @@ body {
     flex-direction: column;
     width: 320px;
 
+
+}
+
+.headline {
+    text-align: center;
+    font-size: 24px;
 }
 
 .output {
@@ -30,6 +37,7 @@ body {
     font-size: 24px;
     text-align: right;
     margin-bottom: 10px;
+    padding: 15px;
 }
 
 .history {
@@ -42,18 +50,24 @@ body {
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding: 10px;
+
 }
 
 .btn {
-    border: none;
+    border: 2px solid #4582d2;
     padding: 15px;
+    font-weight: 700;
     font-size: 18px;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 10px;
+    transition: background-color 0.5s;
 }
 
 .btn:hover {
-    background-color: white;
+    background-color: #4582d2;
+    color: white;
     border-radius: 10px;
 }

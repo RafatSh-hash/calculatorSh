@@ -47,8 +47,8 @@ function handleButtonClick(value) {
 }
 
 function clearDisplay() {
-  currentInput = '';
-  currentOperator = '';
+  currentInput = "0";
+  currentOperator = 0;
   shouldClearDisplay = false;
   updateDisplay();
   updateHistory();
